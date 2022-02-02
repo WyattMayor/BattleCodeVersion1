@@ -15,15 +15,15 @@ public class ArchonStrat {
     static void runArchon(RobotController rc) throws GameActionException {
         if(miners < 5 && turn < 500){
             buildTowardsLowRubble(rc, RobotType.MINER);
-        } else if(soldier < 10 && turn > 450){ //early game
+        } else if(soldier < 10 && turn > 350){ //early game
             buildTowardsLowRubble(rc, RobotType.SOLDIER);
         } else if(builders < 5){
             buildTowardsLowRubble(rc, RobotType.BUILDER);
         } else if(soldier < 10 && turn >= 1000) {
             buildTowardsLowRubble(rc, RobotType.SOLDIER);
-        }else if(turn >= 1000 && (turn % 20 == 0) && soldier < 20){ //late game
+        }else if(turn >= 1000 && (turn % 20 == 0) && soldier < 30){ //late game
             buildTowardsLowRubble(rc, RobotType.SOLDIER);
-        } else if(turn >= 1000 && (turn % 25 == 0) && miners < 5){ //late game
+        } else if(turn >= 1000 && (turn % 25 == 0) && miners < 15){ //late game
             buildTowardsLowRubble(rc, RobotType.MINER);
         }
         turn++;

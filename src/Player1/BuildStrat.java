@@ -42,9 +42,9 @@ strictfp class BuildStrat {
             System.out.println("I moved!");
         }
         //if lead is greater than 10000 build a lab
-        if(rc.getTeamLeadAmount(rc.getTeam()) > 3000 && turn % 30 == 0 && rc.canBuildRobot(RobotType.LABORATORY, dir)){
+        if(rc.getTeamLeadAmount(rc.getTeam()) > 2000 && turn % 30 == 0 && rc.canBuildRobot(RobotType.LABORATORY, dir)){
             rc.buildRobot(RobotType.LABORATORY, dir);
-        }else if(rc.getTeamLeadAmount(rc.getTeam()) > 3500 && turn % 100 == 0 && rc.canBuildRobot(RobotType.WATCHTOWER, dir)) {
+        }else if(rc.getTeamLeadAmount(rc.getTeam()) > 2500 && turn % 100 == 0 && rc.canBuildRobot(RobotType.WATCHTOWER, dir)) {
             rc.buildRobot(RobotType.WATCHTOWER, dir);
         }
     }

@@ -90,6 +90,7 @@ public strictfp class RobotPlayer {
                         BuildStrat.runBuilder(rc);
                         break;
                     case SAGE:
+                        SageStrat.runSage(rc);
                         break;
                 }
             } catch (GameActionException e) {

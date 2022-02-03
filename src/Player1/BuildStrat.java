@@ -6,7 +6,8 @@ import java.util.Random;
 
 strictfp class BuildStrat {
     //turn counter
-    static int turn = 0;
+    static int turn = 0, labs = 0;
+
 
     static void runBuilder(RobotController rc) throws GameActionException {
         //move to repair locations
@@ -41,9 +42,12 @@ strictfp class BuildStrat {
             rc.move(dir);
             System.out.println("I moved!");
         }
-        // if led is greater then 7000 build a watchtower
-        if(rc.getTeamLeadAmount(rc.getTeam()) > 7000 && turn % 100 == 0 && rc.canBuildRobot(RobotType.WATCHTOWER, dir)){
-           rc.buildRobot(RobotType.WATCHTOWER, dir);
+        //if lead is greater than 10000 build a lab
+        if(rc.getTeamLeadAmount(rc.getTeam()) > 500 && turn % 30 == 0 && rc.canBuildRobot(RobotType.LABORATORY, dir) && labs <= 5){
+            rc.buildRobot(RobotType.LABORATORY, dir);
+            labs++;
+        }else if(rc.getTeamLeadAmount(rc.getTeam()) > 500 && turn % 100 == 0 && rc.canBuildRobot(RobotType.WATCHTOWER, dir)) {
+            rc.buildRobot(RobotType.WATCHTOWER, dir);
         }
     }
 }

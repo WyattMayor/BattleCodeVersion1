@@ -58,7 +58,6 @@ strictfp class MinerStrat {
                 exploreDir = exploreDir.opposite();
         }
         }
-        // Also try to move randomly.
         Direction dir = RobotPlayer.directions[RobotPlayer.rng.nextInt(RobotPlayer.directions.length)];
         if (rc.canMove(dir)) {
             rc.move(dir);

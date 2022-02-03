@@ -6,26 +6,25 @@ import java.util.Random;
 
 public class ArchonStrat {
     // setting variables to count robots
-    static int miners = 0, soldier = 0, builders = 0;
+    static int miners = 0, soldier = 0, builders = 0, turn =0, sages = 0;
 
     // set parameters for when certain robots should spawn.
     // to start we build miners due to the opponent not attacking right away.
     //Then when led passes 5000 it will start spawning soldiers then builders.
     // if led gets to low then spawn miners
     static void runArchon(RobotController rc) throws GameActionException {
-        if(miners < 5){
+        if(miners < 3 && turn < 500){
             buildTowardsLowRubble(rc, RobotType.MINER);
-        } else if(soldier < 10){
+        } /*else if(soldier < 10 && turn > 550){ //early game
             buildTowardsLowRubble(rc, RobotType.SOLDIER);
-        } else if(builders < 1){
+        }*/ else if(builders < 2){
             buildTowardsLowRubble(rc, RobotType.BUILDER);
-        } else if(miners < soldier / 2 && rc.getTeamLeadAmount(rc.getTeam()) < 5000){
-            buildTowardsLowRubble(rc, RobotType.MINER);
-        } else if(builders < soldier / 10){
-            buildTowardsLowRubble(rc, RobotType.BUILDER);
-        } else {
+        } /*else if(soldier < 10 && turn >= 1000) {
             buildTowardsLowRubble(rc, RobotType.SOLDIER);
+        }*/ else if(sages < 10 && rc.getTeamGoldAmount(rc.getTeam()) >= 20){
+            buildTowardsLowRubble(rc, RobotType.SAGE);
         }
+        turn++;
     }
         static void buildTowardsLowRubble(RobotController rc, RobotType type) throws GameActionException{
 
@@ -39,6 +38,7 @@ public class ArchonStrat {
                         case MINER: miners++; break;
                         case SOLDIER: soldier++; break;
                         case BUILDER: builders++; break;
+                        case SAGE: sages++; break;
                         default: break;
                     }
                 }

@@ -16,7 +16,7 @@ public class ArchonStrat {
                 buildTowardsLowRubble(rc, RobotType.MINER);
         } else if(builders < 3){
                 buildTowardsLowRubble(rc, RobotType.BUILDER);
-        } else if(soldier < 10) {
+        } else if(soldier < 100) {
                 buildTowardsLowRubble(rc, RobotType.SOLDIER);
         } else if(sages < 10 && rc.getTeamGoldAmount(rc.getTeam()) >= 20){
                 buildTowardsLowRubble(rc, RobotType.SAGE);

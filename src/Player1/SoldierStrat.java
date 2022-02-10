@@ -26,10 +26,28 @@ strictfp class SoldierStrat {
                 }
          Also try to move randomly.
         */
+
         Direction dir = RobotPlayer.directions[RobotPlayer.rng.nextInt(RobotPlayer.directions.length)];
-        if (rc.canMove(dir)) {
-            rc.move(dir);
-            System.out.println("I moved!");
+        /*for (int x : rc.senseNearbyRobots(radius,opponent)){
+            if x == RobotType ARCHON;
+            Direction toMove = me.directionTo(targetLocation);
+                if (rc.canMove(toMove)) {
+                    rc.move(toMove);
+            }
+            else if (rc.canMove(Direction.NORTH)) {
+                rc.move(Direction.NORTH);
+                System.out.println("I moved!");}
+            else if (rc.canMove(Direction.EAST)) {
+                rc.move(Direction.EAST);
+                System.out.println("I moved!");}
+            else if (rc.canMove(Direction.SOUTH)) {
+                rc.move(Direction.SOUTH);
+                System.out.println("I moved!");}
+            else if (rc.canMove(Direction.WEST)) {
+                rc.move(Direction.WEST);
+                System.out.println("I moved!");} */
+        if (rc.canMove(Direction.EAST)) {
+            rc.move(Direction.EAST);
         }
     }
 }

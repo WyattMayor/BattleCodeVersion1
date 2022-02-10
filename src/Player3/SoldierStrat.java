@@ -15,16 +15,26 @@ strictfp class SoldierStrat {
             }
         }
         Direction dir = RobotPlayer.directions[RobotPlayer.rng.nextInt(RobotPlayer.directions.length)];
-        int e = 0, n = 0;
-        if (rc.canMove(Direction.EAST) && e < 1) {
+        int getRoundNum = rc.getRoundNum();
+        int e = 0, n = 0, w = 0, s = 0;
+        if (rc.canMove(Direction.EAST) && e < 1 && getRoundNum > 0 && getRoundNum < 350 ) {
             rc.move(Direction.EAST);
-        } else if (rc.canMove(Direction.NORTH) && n < 1) {
+        } else if (rc.canMove(Direction.WEST) && n < 1 && getRoundNum > 350  && getRoundNum < 600) {
+            e++;
+            rc.move(Direction.WEST);
+        } else if (rc.canMove(Direction.NORTH) && n < 1 && getRoundNum > 600  && getRoundNum < 1000) {
             e++;
             rc.move(Direction.NORTH);
-        } else if (rc.canMove(Direction.SOUTHWEST)) {
-            n++;
-            rc.move(Direction.SOUTHWEST);
-        }
+        } else if (rc.canMove(Direction.SOUTH) && s < 1 && getRoundNum > 1500  && getRoundNum< 2000) {
+            s++;
+            rc.move(Direction.SOUTH);
+        } else if (rc.canMove(Direction.EAST) && s < 1 && getRoundNum > 1000  && getRoundNum< 1500) {
+            s++;
+            rc.move(Direction.EAST);
+        } else if (rc.canMove(Direction.WEST) && s < 1 && getRoundNum > 1500  && getRoundNum< 2000) {
+            s++;
+            rc.move(Direction.WEST);
+    }
     }
 }
 
